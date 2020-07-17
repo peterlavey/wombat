@@ -1,0 +1,10 @@
+header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background: #1F2130;
+    color: #BBB;
+}
+header div {
+    margin-left: 10px;
+}

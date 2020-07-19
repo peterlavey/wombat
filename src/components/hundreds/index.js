@@ -7,7 +7,7 @@ const Hundreds = ()=> {
     const context = useContext(RootContext);
 
     return (
-        <div onClick={()=> context.addHundreds()}>
+        <div onClick={context.addHundreds} className={'cube-button'}>
             <Cube img={hundreds} alt={'Centena'}/>
         </div>
     )

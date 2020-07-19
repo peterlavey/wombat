@@ -19,6 +19,10 @@ class RootProvider extends Component {
         }
     }
 
+    removeUnits = () => {
+        if(this.state.units > 0) this.setState({units: this.state.units - 1});
+    }
+
     addTens = () => {
         if(this.state.tens === 9) {
             this.setState({tens: 0});
@@ -26,6 +30,10 @@ class RootProvider extends Component {
         } else {
             this.setState({tens: this.state.tens + 1});
         }
+    }
+
+    removeTens = () => {
+        if(this.state.tens > 0) this.setState({tens: this.state.tens - 1});
     }
 
     addHundreds = () => {
@@ -37,16 +45,24 @@ class RootProvider extends Component {
         }
     }
 
+    removeHundreds = () => {
+        if(this.state.hundreds > 0) this.setState({hundreds: this.state.hundreds - 1});
+    }
+
     addThousands = () => {
         if(this.state.thousands !== 10) this.setState({thousands: this.state.thousands + 1});
     }
 
+    removeThousands = () => {
+        if(this.state.thousands > 0) this.setState({thousands: this.state.thousands - 1});
+    }
+
     render() {
         const { children } = this.props
-        const { addUnits, addTens, addHundreds, addThousands } = this
+        const { addUnits, addTens, addHundreds, addThousands, removeUnits, removeTens, removeHundreds, removeThousands } = this
 
         return (
-            <RootContext.Provider value={{...this.state, addUnits, addTens, addHundreds, addThousands}}>
+            <RootContext.Provider value={{...this.state, addUnits, addTens, addHundreds, addThousands, removeUnits, removeTens, removeHundreds, removeThousands}}>
                 {children}
             </RootContext.Provider>
         )

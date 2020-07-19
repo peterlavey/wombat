@@ -7,7 +7,7 @@ const Unit = ()=> {
     const context = useContext(RootContext);
 
     return (
-        <div onClick={()=> context.addUnits()}>
+        <div onClick={context.addUnits} className={'cube-button'}>
             <Cube img={unit} alt={'Unidad'}/>
         </div>
     )

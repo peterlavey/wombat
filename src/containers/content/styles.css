@@ -1,8 +1,18 @@
 .content {
     background: #FFF;
-    flex: 1 0 auto;
+    display: flex;
+    align-items: stretch;
 }
 
-.content > .cube {
+.content > .place-value {
+    width: 13em;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.place-value > .cube {
     display: inline;
 }

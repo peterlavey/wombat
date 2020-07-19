@@ -1,11 +1,10 @@
 import React from 'react';
-import unit from '../../assets/units.png'
 import './styles.css';
 
-const Cube = ()=> {
+const Cube = ({img, alt})=> {
     return (
         <div className={'cube'}>
-            <img src={unit} alt={'Unidad'} width={150} height={87}/>
+            <img src={img} alt={alt} width={150} height={87}/>
         </div>
     )
 }

@@ -1,16 +1,17 @@
 import React from 'react';
 import './styles.css';
-import Cube from "../../components/cube";
+import Unit from "../../components/unit";
+import Tens from "../../components/tens";
+import Hundreds from "../../components/hundreds";
+import Thousands from "../../components/thousands";
 
 const Sidebar = ()=> {
     return (
         <aside>
-            <Cube/>
-            <Cube/>
-            <Cube/>
-            <Cube/>
-            <Cube/>
-            <Cube/>
+            <Unit/>
+            <Tens/>
+            <Hundreds/>
+            <Thousands/>
         </aside>
     )
 }

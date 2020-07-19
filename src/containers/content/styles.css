@@ -2,3 +2,7 @@
     background: #FFF;
     flex: 1 0 auto;
 }
+
+.content > .cube {
+    display: inline;
+}

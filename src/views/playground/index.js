@@ -1,14 +1,16 @@
 import React from 'react';
 import Sidebar from "../../containers/sidebar";
-
-import './styles.css';
 import Content from "../../containers/content";
+import {RootProvider} from "../../context/RootProvider";
+import './styles.css';
 
 const Playground = ()=> {
     return (
         <div className={'wrapper'}>
-            <Sidebar/>
-            <Content/>
+            <RootProvider value={{}}>
+                <Sidebar/>
+                <Content/>
+            </RootProvider>
         </div>
     )
 }

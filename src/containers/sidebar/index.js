@@ -4,6 +4,7 @@ import Unit from "../../components/unit";
 import Tens from "../../components/tens";
 import Hundreds from "../../components/hundreds";
 import Thousands from "../../components/thousands";
+import Results from "../../components/results";
 
 const Sidebar = ()=> {
     return (
@@ -12,6 +13,7 @@ const Sidebar = ()=> {
             <Tens/>
             <Hundreds/>
             <Thousands/>
+            <Results/>
         </aside>
     )
 }

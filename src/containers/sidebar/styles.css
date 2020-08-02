@@ -2,4 +2,8 @@ aside {
     width: 20%;
     background: #272D40;
     padding-top: 1%;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }

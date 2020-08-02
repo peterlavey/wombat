@@ -50,7 +50,7 @@ class RootProvider extends Component {
     }
 
     addThousands = () => {
-        if(this.state.thousands !== 10) this.setState({thousands: this.state.thousands + 1});
+        this.setState({thousands: this.state.thousands + 1});
     }
 
     removeThousands = () => {

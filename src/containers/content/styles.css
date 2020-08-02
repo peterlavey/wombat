@@ -11,6 +11,10 @@
     line-height: 75px;
     font-size: 30px;
     cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .place-value > .cube {

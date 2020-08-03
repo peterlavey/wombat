@@ -11,10 +11,10 @@ import thousandsImg from '../../assets/thousands.png';
 const Content = ()=> {
     const context = useContext(RootContext);
 
-    const units = Array(context.units).fill().map(()=> <Cube img={unitsImg} alt={'Unidades'}/>)
-    const tens = Array(context.tens).fill().map(()=> <Cube img={tensImg} alt={'Decenas'}/>)
-    const hundreds = Array(context.hundreds).fill().map(()=> <Cube img={hundredsImg} alt={'Centenas'}/>)
-    const thousands = Array(context.thousands).fill().map(()=> <Cube img={thousandsImg} alt={'Unidades de mil'}/>)
+    const units = Array(context.units).fill().map((el, i)=> <Cube img={unitsImg} alt={'Unidades'} key={`unit-${i}`}/>)
+    const tens = Array(context.tens).fill().map((el, i)=> <Cube img={tensImg} alt={'Decenas'} key={`ten-${i}`}/>)
+    const hundreds = Array(context.hundreds).fill().map((el, i)=> <Cube img={hundredsImg} alt={'Centenas'} key={`hundred-${i}`}/>)
+    const thousands = Array(context.thousands).fill().map((el, i)=> <Cube img={thousandsImg} alt={'Unidades de mil'} key={`thousand-${i}`}/>)
 
     return (
         <div className={'content'}>

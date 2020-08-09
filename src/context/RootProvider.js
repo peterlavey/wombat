@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 
 const RootContext = React.createContext({});
 
@@ -57,12 +57,33 @@ class RootProvider extends Component {
         if(this.state.thousands > 0) this.setState({thousands: this.state.thousands - 1});
     }
 
+    getResult = () => this.state.units + (this.state.tens * 10) + (this.state.hundreds * 100) + (this.state.thousands * 1000);
+
     render() {
         const { children } = this.props
-        const { addUnits, addTens, addHundreds, addThousands, removeUnits, removeTens, removeHundreds, removeThousands } = this
+        const {
+            addUnits,
+            addTens,
+            addHundreds,
+            addThousands,
+            removeUnits,
+            removeTens,
+            removeHundreds,
+            removeThousands
+        } = this
 
         return (
-            <RootContext.Provider value={{...this.state, addUnits, addTens, addHundreds, addThousands, removeUnits, removeTens, removeHundreds, removeThousands}}>
+            <RootContext.Provider value={{
+                ...this.state,
+                addUnits,
+                addTens,
+                addHundreds,
+                addThousands,
+                removeUnits,
+                removeTens,
+                removeHundreds,
+                removeThousands
+            }}>
                 {children}
             </RootContext.Provider>
         )

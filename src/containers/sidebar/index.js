@@ -1,21 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './styles.css';
-import Unit from "../../components/unit";
-import Tens from "../../components/tens";
-import Hundreds from "../../components/hundreds";
-import Thousands from "../../components/thousands";
-import Results from "../../components/results";
+import RootContext from "../../context/RootProvider";
 
 const Sidebar = ()=> {
+    const context = useContext(RootContext);
+
     return (
         <aside>
-            <Unit/>
-            <Tens/>
-            <Hundreds/>
-            <Thousands/>
-            <Results/>
+            <Item text={'Unidad'} onClick={context.addUnits}/>
+            <Item text={'Decena'} onClick={context.addTens}/>
+            <Item text={'Centena'} onClick={context.addHundreds}/>
+            <Item text={'Unidad de mil'} onClick={context.addThousands}/>
         </aside>
-    )
-}
+    );
+};
+
+const Item = ({text, onClick})=> {
+    return (
+        <div onClick={onClick}>{text}</div>
+    );
+};
 
 export default Sidebar;

@@ -7,3 +7,15 @@ aside {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
+aside > div {
+    color: #FFF;
+    font-size: x-large;
+    padding: 5% 0 5% 10%;
+    text-align: initial;
+}
+
+aside > div:hover {
+    background-color: #6696C6;
+    cursor: pointer;
+}

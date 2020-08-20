@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -26,6 +22,12 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@font-face {
+  font-family: 'Barika';
+  src: url('assets/fonts/BARIKA.otf') format('otf'),
+  url('assets/fonts/BARIKA.ttf') format('truetype');
 }
 
 @keyframes App-logo-spin {

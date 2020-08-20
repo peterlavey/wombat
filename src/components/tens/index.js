@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Cube from '../cube';
-import tens from '../../assets/tens.png'
+import tens from '../../assets/images/tens.png'
 import RootContext from "../../context/RootProvider";
 
 const Tens = ()=> {

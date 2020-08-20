@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Cube from '../cube';
-import unit from '../../assets/units.png'
+import unit from '../../assets/images/units.png'
 import RootContext from '../../context/RootProvider'
 
 const Unit = ()=> {

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Cube from '../cube';
-import thousands from '../../assets/thousands.png'
+import thousands from '../../assets/images/thousands.png'
 import RootContext from "../../context/RootProvider";
 
 const Thousands = ()=> {

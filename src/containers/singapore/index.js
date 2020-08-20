@@ -1,12 +1,14 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import './styles.css';
 import RootContext from "../../context/RootProvider";
 import Cube from "../../components/cube";
-import unitsImg from '../../assets/units.png';
-import tensImg from '../../assets/tens.png';
-import hundredsImg from '../../assets/hundreds.png';
-import thousandsImg from '../../assets/thousands.png';
+import unitsImg from '../../assets/images/units.png';
+import tensImg from '../../assets/images/tens.png';
+import hundredsImg from '../../assets/images/hundreds.png';
+import thousandsImg from '../../assets/images/thousands.png';
+import Modal from "../../components/modal";
+import {Column, Row} from "../../components/grid";
 
 const Singapore = ()=> {
     const context = useContext(RootContext);
@@ -15,6 +17,19 @@ const Singapore = ()=> {
     const tens = Array(context.tens).fill().map((el, i)=> <Cube img={tensImg} alt={'Decenas'} key={`ten-${i}`}/>)
     const hundreds = Array(context.hundreds).fill().map((el, i)=> <Cube img={hundredsImg} alt={'Centenas'} key={`hundred-${i}`}/>)
     const thousands = Array(context.thousands).fill().map((el, i)=> <Cube img={thousandsImg} alt={'Unidades de mil'} key={`thousand-${i}`}/>)
+    const [show, setShow] = useState(false);
+
+    const showResult = (event)=> {
+        if(event.key === 'Enter'){
+            setShow(true);
+        }
+    }
+
+    useEffect(()=> {
+        document.addEventListener('keyup', showResult);
+
+        return ()=> document.removeEventListener('keyup', showResult);
+    }, []);
 
     return (
         <div className={'content'}>
@@ -37,6 +52,19 @@ const Singapore = ()=> {
                 <h2>Unidad</h2>
                 {units}
             </div>
+
+            <Modal show={show} setShow={setShow}>
+                <Row>
+                    <Column>
+                        <h1 align={'center'}>Representación simbolica</h1>
+                    </Column>
+                </Row>
+                <Row>
+                    <Column>
+                        <h2 align={'center'}>{context.result}</h2>
+                    </Column>
+                </Row>
+            </Modal>
         </div>
     )
 }

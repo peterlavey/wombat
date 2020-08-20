@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 
 const RootContext = React.createContext({});
 
@@ -7,6 +7,11 @@ const RootProvider = (props)=> {
     const [tens, setTens] = useState(0);
     const [hundreds, setHundreds] = useState(0);
     const [thousands, setThousands] = useState(0);
+    const [result, setResult] = useState(0);
+
+    useEffect(()=> {
+        setResult(units + (tens * 10) + (hundreds * 100) + (thousands * 1000));
+    }, [units, tens, hundreds, thousands]);
 
     const addUnits = () => {
         if(units === 9) {
@@ -17,10 +22,6 @@ const RootProvider = (props)=> {
         }
     };
 
-    const removeUnits = () => {
-        if(units) setUnits(units - 1);
-    }
-
     const addTens = () => {
         if(tens === 9) {
             setTens(0);
@@ -28,10 +29,6 @@ const RootProvider = (props)=> {
         } else {
             setTens(tens + 1);
         }
-    }
-
-    const removeTens = () => {
-        if(tens) setTens(tens - 1);
     }
 
     const addHundreds = () => {
@@ -43,17 +40,14 @@ const RootProvider = (props)=> {
         }
     }
 
-    const removeHundreds = () => {
-        if(hundreds) setHundreds(hundreds - 1);
-    }
-
     const addThousands = () => {
         setThousands(thousands + 1);
     }
 
-    const removeThousands = () => {
-        if(thousands) setThousands(thousands - 1);
-    }
+    const removeUnits = () => units? setUnits(units - 1): false;
+    const removeTens = () => tens? setTens(tens - 1): false;
+    const removeHundreds = () => hundreds? setHundreds(hundreds - 1): false;
+    const removeThousands = () => thousands? setThousands(thousands - 1): false;
 
     const { children } = props
 
@@ -63,6 +57,7 @@ const RootProvider = (props)=> {
             tens,
             hundreds,
             thousands,
+            result,
             addUnits,
             addTens,
             addHundreds,

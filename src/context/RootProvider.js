@@ -1,72 +1,75 @@
-import React, { Component } from 'react'
+import React, {useEffect, useState} from 'react'
 
 const RootContext = React.createContext({});
 
-class RootProvider extends Component {
-    state = {
-        units: 0,
-        tens: 0,
-        hundreds: 0,
-        thousands: 0
-    }
+const RootProvider = (props)=> {
+    const [units, setUnits] = useState(0);
+    const [tens, setTens] = useState(0);
+    const [hundreds, setHundreds] = useState(0);
+    const [thousands, setThousands] = useState(0);
+    const [result, setResult] = useState(0);
 
-    addUnits = () => {
-        if(this.state.units === 9) {
-            this.setState({units: 0});
-            this.addTens();
+    useEffect(()=> {
+        setResult(units + (tens * 10) + (hundreds * 100) + (thousands * 1000));
+    }, [units, tens, hundreds, thousands]);
+
+    const addUnits = () => {
+        if(units === 9) {
+            setUnits(0);
+            addTens();
         } else {
-            this.setState({units: this.state.units + 1});
+            setUnits(units + 1);
+        }
+    };
+
+    const addTens = () => {
+        if(tens === 9) {
+            setTens(0);
+            addHundreds();
+        } else {
+            setTens(tens + 1);
         }
     }
 
-    removeUnits = () => {
-        if(this.state.units > 0) this.setState({units: this.state.units - 1});
-    }
-
-    addTens = () => {
-        if(this.state.tens === 9) {
-            this.setState({tens: 0});
-            this.addHundreds();
+    const addHundreds = () => {
+        if(hundreds === 9) {
+            setHundreds(0);
+            addThousands();
         } else {
-            this.setState({tens: this.state.tens + 1});
+            setHundreds(hundreds + 1);
         }
     }
 
-    removeTens = () => {
-        if(this.state.tens > 0) this.setState({tens: this.state.tens - 1});
+    const addThousands = () => {
+        setThousands(thousands + 1);
     }
 
-    addHundreds = () => {
-        if(this.state.hundreds === 9) {
-            this.setState({hundreds: 0});
-            this.addThousands();
-        } else {
-            this.setState({hundreds: this.state.hundreds + 1});
-        }
-    }
+    const removeUnits = () => units? setUnits(units - 1): false;
+    const removeTens = () => tens? setTens(tens - 1): false;
+    const removeHundreds = () => hundreds? setHundreds(hundreds - 1): false;
+    const removeThousands = () => thousands? setThousands(thousands - 1): false;
 
-    removeHundreds = () => {
-        if(this.state.hundreds > 0) this.setState({hundreds: this.state.hundreds - 1});
-    }
+    const { children } = props
 
-    addThousands = () => {
-        this.setState({thousands: this.state.thousands + 1});
-    }
-
-    removeThousands = () => {
-        if(this.state.thousands > 0) this.setState({thousands: this.state.thousands - 1});
-    }
-
-    render() {
-        const { children } = this.props
-        const { addUnits, addTens, addHundreds, addThousands, removeUnits, removeTens, removeHundreds, removeThousands } = this
-
-        return (
-            <RootContext.Provider value={{...this.state, addUnits, addTens, addHundreds, addThousands, removeUnits, removeTens, removeHundreds, removeThousands}}>
-                {children}
-            </RootContext.Provider>
-        )
-    }
+    return (
+        <RootContext.Provider value={{
+            units,
+            tens,
+            hundreds,
+            thousands,
+            result,
+            addUnits,
+            addTens,
+            addHundreds,
+            addThousands,
+            removeUnits,
+            removeTens,
+            removeHundreds,
+            removeThousands
+        }}>
+            {children}
+        </RootContext.Provider>
+    )
 }
 
 export default RootContext

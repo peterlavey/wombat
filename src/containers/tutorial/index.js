@@ -5,6 +5,10 @@ import {Column, Row} from "../../components/grid";
 const margin = {margin: '3% 5%'}
 
 const Tutorial = ()=> {
+    const textSize = {
+        xLarge: {fontSize: 'x-large'}
+    };
+
     return (
         <div style={margin}>
             <Row>
@@ -14,9 +18,9 @@ const Tutorial = ()=> {
             </Row>
             <Row>
                 <Column>
-                    <p>
+                    <p style={textSize.xLarge}>
                         Añade los bloques haciendo click en la barra lateral, el resultado
-                        se mostrara presionado la tecla "Enter".
+                        se mostrará presionando la tecla "Enter".
                     </p>
                 </Column>
             </Row>

@@ -3,10 +3,10 @@ import React, {useContext, useEffect, useState} from 'react';
 import './styles.css';
 import RootContext from "../../context/RootProvider";
 import Cube from "../../components/cube";
-import unitsImg from '../../assets/images/units.png';
-import tensImg from '../../assets/images/tens.png';
-import hundredsImg from '../../assets/images/hundreds.png';
-import thousandsImg from '../../assets/images/thousands.png';
+import unitsImg from '../../assets/images/unit.svg';
+import tensImg from '../../assets/images/tens.svg';
+import hundredsImg from '../../assets/images/hundreds.svg';
+import thousandsImg from '../../assets/images/thousands.svg';
 import Modal from "../../components/modal";
 import {Column, Row} from "../../components/grid";
 
@@ -56,12 +56,12 @@ const Singapore = ()=> {
             <Modal show={show} setShow={setShow}>
                 <Row>
                     <Column>
-                        <h1 align={'center'}>Representación simbolica</h1>
+                        <h1 align={'center'}>Representación simbólica</h1>
                     </Column>
                 </Row>
                 <Row>
                     <Column>
-                        <h2 align={'center'}>{context.result}</h2>
+                        <h2 align={'center'}>{context.result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h2>
                     </Column>
                 </Row>
             </Modal>
